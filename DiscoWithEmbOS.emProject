@@ -1,0 +1,77 @@
+<!DOCTYPE CrossStudio_Project_File>
+<solution Name="DiscoWithEmbOS" target="8" version="2">
+  <project Name="DiscoWithEmbOS">
+    <configuration
+      LIBRARY_IO_TYPE="None"
+      Name="Common"
+      arm_architecture="v7EM"
+      arm_compiler_variant="clang"
+      arm_core_type="Cortex-M4"
+      arm_endian="Little"
+      arm_fpu_type="FPv4-SP-D16"
+      arm_linker_heap_size="0"
+      arm_linker_process_stack_size="0"
+      arm_linker_stack_size="2048"
+      arm_linker_variant="SEGGER"
+      arm_rtl_variant="SEGGER"
+      arm_simulator_memory_simulation_parameter="ROM;0x08000000;0x00200000;RAM;0x20000000;0x00030000;RAM;0x10000000;0x00010000"
+      arm_simulator_stop_on_branch_dot="No"
+      arm_target_device_name="STM32F429ZI"
+      arm_target_interface_type="SWD"
+      c_preprocessor_definitions="STM32F4;STM32F429xx;HSE_VALUE=8000000"
+      c_preprocessor_undefinitions="USE_HAL_DRIVER"
+      c_user_include_directories=".\\port\\startup;.\\port\\bsp\\cmsis;.\\port\\bsp\\inc"
+      debug_register_definition_file="$(ProjectDir)/port/memory/registers.xml"
+      debug_target_connection="J-Link"
+      gcc_entry_point="Reset_Handler"
+      link_linker_script_file="$(ProjectDir)/port/memory/linker_file.icf"
+      linker_additional_options="--gc-sections"
+      linker_memory_map_file="$(ProjectDir)/port/memory/memory_map.xml"
+      linker_output_format="hex"
+      linker_section_placements_segments="FLASH1 RX 0x08000000 0x00200000;RAM1 RWX 0x20000000 0x00030000"
+      project_directory=""
+      project_type="Executable"
+      target_reset_script="Reset();"
+      target_script_file="$(ProjectDir)/port/memory/target_script.js"
+      target_trace_initialize_script="EnableTrace(&quot;$(TraceInterfaceType)&quot;)" />
+    <folder Name="port">
+      <folder Name="memory">
+        <file file_name="port/memory/linker_file.icf" />
+      </folder>
+      <folder Name="bsp">
+        <folder Name="inc">
+          <file file_name="port/bsp/inc/stm32f4xx.h" />
+          <file file_name="port/bsp/inc/stm32f429xx.h" />
+        </folder>
+        <folder Name="cmsis">
+          <file file_name="port/bsp/cmsis/cmsis_compiler.h" />
+          <file file_name="port/bsp/cmsis/cmsis_gcc.h" />
+          <file file_name="port/bsp/cmsis/cmsis_version.h" />
+          <file file_name="port/bsp/cmsis/core_cm4.h" />
+          <file file_name="port/bsp/cmsis/mpu_armv7.h" />
+        </folder>
+      </folder>
+      <folder Name="startup">
+        <file file_name="port/startup/startup.s" />
+        <file file_name="port/startup/vectors.s" />
+        <file file_name="port/startup/system_stm32f4xx.c" />
+        <file file_name="port/startup/system_stm32f4xx.h" />
+        <file file_name="port/startup/startup_thumb.s" />
+      </folder>
+    </folder>
+    <folder Name="application">
+      <file file_name="application/main.c" />
+    </folder>
+  </project>
+  <configuration
+    Name="Debug"
+    c_preprocessor_definitions="DEBUG"
+    gcc_debugging_level="Level 3"
+    gcc_optimization_level="None" />
+  <configuration
+    Name="Release"
+    c_preprocessor_definitions="NDEBUG"
+    gcc_debugging_level="Level 2"
+    gcc_omit_frame_pointer="Yes"
+    gcc_optimization_level="Level 2 balanced" />
+</solution>
