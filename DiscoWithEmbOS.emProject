@@ -8,10 +8,11 @@
       arm_compiler_variant="clang"
       arm_core_type="Cortex-M4"
       arm_endian="Little"
+      arm_fp_abi="SoftFP"
       arm_fpu_type="FPv4-SP-D16"
-      arm_linker_heap_size="0"
+      arm_linker_heap_size="1024"
       arm_linker_process_stack_size="0"
-      arm_linker_stack_size="2048"
+      arm_linker_stack_size="1024"
       arm_linker_variant="SEGGER"
       arm_rtl_variant="SEGGER"
       arm_simulator_memory_simulation_parameter="ROM;0x08000000;0x00200000;RAM;0x20000000;0x00030000;RAM;0x10000000;0x00010000"
@@ -20,7 +21,7 @@
       arm_target_interface_type="SWD"
       c_preprocessor_definitions="STM32F4;STM32F429xx;HSE_VALUE=8000000"
       c_preprocessor_undefinitions="USE_HAL_DRIVER"
-      c_user_include_directories=".\\port\\startup;.\\port\\bsp\\cmsis;.\\port\\bsp\\inc"
+      c_user_include_directories=".\\port\\startup;.\\port\\bsp\\cmsis;.\\port\\bsp\\inc;.\\rtos\\inc"
       debug_register_definition_file="$(ProjectDir)/port/memory/registers.xml"
       debug_target_connection="J-Link"
       gcc_entry_point="Reset_Handler"
@@ -62,16 +63,30 @@
     <folder Name="application">
       <file file_name="application/main.c" />
     </folder>
+    <folder Name="rtos">
+      <folder Name="lib">
+        <file file_name="rtos/lib/libos_v7m_t_vfpv4_le_r.a" />
+      </folder>
+      <folder Name="inc">
+        <file file_name="rtos/inc/Global.h" />
+        <file file_name="rtos/inc/OS_Config.h" />
+        <file file_name="rtos/inc/RTOS.h" />
+      </folder>
+      <folder Name="src">
+        <file file_name="rtos/src/OS_Idle.c" />
+        <file file_name="rtos/src/OS_Init.c" />
+        <file file_name="rtos/src/OS_SysTick.c" />
+      </folder>
+    </folder>
   </project>
   <configuration
     Name="Debug"
-    c_preprocessor_definitions="DEBUG"
     gcc_debugging_level="Level 3"
     gcc_optimization_level="None" />
   <configuration
     Name="Release"
-    c_preprocessor_definitions="NDEBUG"
     gcc_debugging_level="Level 2"
     gcc_omit_frame_pointer="Yes"
     gcc_optimization_level="Level 2 balanced" />
+  <configuration Name="Common" c_preprocessor_definitions="" />
 </solution>
