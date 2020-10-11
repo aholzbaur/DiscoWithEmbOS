@@ -54,12 +54,8 @@ Purpose : Configuration settings for the OS build and embOSView
 *  modes for debug and release configurations of your project.
 */
 
-#if (defined(DEBUG) && (DEBUG == 1))
-  #define OS_LIBMODE_DP
-#else
-  #define OS_LIBMODE_R
-  #define OS_VIEW_IFSELECT  OS_VIEW_DISABLED  // embOSView communication is disabled per default in release configuration
-#endif
+#define OS_LIBMODE_S
+#define OS_VIEW_IFSELECT  OS_VIEW_DISABLED  // embOSView communication is disabled per default in release configuration
 
 /*********************************************************************
 *

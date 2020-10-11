@@ -61,11 +61,15 @@
       </folder>
     </folder>
     <folder Name="application">
-      <file file_name="application/main.c" />
+      <file file_name="application/main.cpp" />
+      <folder Name="leds">
+        <file file_name="application/leds/leds-service.cpp" />
+        <file file_name="application/leds/leds-service.hpp" />
+      </folder>
     </folder>
     <folder Name="rtos">
       <folder Name="lib">
-        <file file_name="rtos/lib/libos_v7m_t_vfpv4_le_r.a" />
+        <file file_name="rtos/lib/libos_v7m_t_vfpv4_le_s.a" />
       </folder>
       <folder Name="inc">
         <file file_name="rtos/inc/Global.h" />
@@ -76,6 +80,7 @@
         <file file_name="rtos/src/OS_Idle.c" />
         <file file_name="rtos/src/OS_Init.c" />
         <file file_name="rtos/src/OS_SysTick.c" />
+        <file file_name="rtos/src/OS_Error.c" />
       </folder>
     </folder>
   </project>
