@@ -56,6 +56,7 @@ Purpose : Configuration settings for the OS build and embOSView
 
 #define OS_LIBMODE_S
 #define OS_VIEW_IFSELECT  OS_VIEW_DISABLED  // embOSView communication is disabled per default in release configuration
+#define OS_STACKCHECK_LIMIT 80u
 
 /*********************************************************************
 *
